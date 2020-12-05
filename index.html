@@ -3,10 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
     <title>MyPet Simulator</title>
 </head>
 <body>
-    <label>Enter the mame of Your Pet:</label>
+    <h1>My Pet Simulator</h1>
+
+    <h3>Choose Your Type of Pet:</h3>
+        <input type="radio" name="radio" id="type-dog">
+        <label for="type-dog">Dog</label>
+        <input type="radio" id="type-cat">
+        <label for="type-cat">Cat</label>
+
+    <h3>Enter the name of your Pet:</h3>
+        <input text="Pet Name" id="pet-name">
+    <button type="button" onclick="return createPet()">Create Pet</button>
+
+    <p id="response"></p>
     
+    <button type="button" onclick="return getHealth()">Pet Status</button>
+    <button type="button" onclick="return feedPet()">Feed Pet</button>
+    <button type="button" onclick="return speakPet()">Speak to Pet</button>
+
+    <p id="pet-actions"></p>
+    
+    <script src="js/index.js"></script>
 </body>
 </html>
