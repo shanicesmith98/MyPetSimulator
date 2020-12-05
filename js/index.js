@@ -7,7 +7,7 @@ class Pet {
     }
 
     status () {
-        return `${this.name} is a ${this.age}, ${this.health} ${this.type}!`;
+        return `${this.name} is a ${this.age}, ${this.healthStatus} ${this.type}!`;
     }
 
     health () {
@@ -73,19 +73,19 @@ class Cat extends Pet {
     }
 }
 
-function createPet () {
-    let Doge, Kitty;
-    let name, response;
+let chosenPet;
+let name, response;
 
+function createPet () {
     name = document.getElementById("pet-name").value;
 
     if (document.getElementById("type-dog").checked === true) {
-        Doge = new Dog("Doge");
-        response = `Please welcome your new Dog, ${name}`;
+        chosenPet = new Dog("Doge");
+        response = `Please welcome your new Dog, ${name} 🐶`;
     }
     else if (document.getElementById("type-cat").checked === true) {
-        Kitty = new Cat("Kitty");
-        response = `Please welcome your new Cat, ${name}`;
+        chosenPet = new Cat("Kitty");
+        response = `Please welcome your new Cat, ${name} 🐱`;
     }
     else if (document.getElementById("type-dog").checked === true && document.getElementById("type-cat").checked === true) {
         response = `Please, one pet at a time!`;
@@ -97,6 +97,15 @@ function createPet () {
     document.getElementById("response").innerHTML = `${response}`; 
 }
 
+const actionLog = [];
 
-const actions = [];
+function getHealth () {
+    actionLog.push(chosenPet.status);
+    document.getElementById("pet-actions").innerHTML = `${chosenPet.status}`;
+}
 
+function returnLog () {
+    for (let action of actionLog) {
+       document.getElementById("pet-actions").innerHTML = `${action}`; 
+    }
+}
